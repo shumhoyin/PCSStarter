@@ -1,0 +1,96 @@
+200409-20:55:07 [INFO] -- 
+200409-20:55:07 [INFO] -- 
+200409-20:55:07 [INFO] -- ============================================================
+200409-20:55:07 [INFO] -- PCSStarter: Application Starting...
+200409-20:55:07 [FINE] -- PCSStarter: registering timer
+200409-20:55:07 [FINE] -- timer: created!
+200409-20:55:07 [FINE] -- PCSStarter: registering PCSCore
+200409-20:55:07 [FINE] -- PCSCore: created!
+200409-20:55:07 [FINE] -- PCSStarter: registering EntranceGateHandler
+200409-20:55:07 [FINE] -- EntranceGateHandler: created!
+200409-20:55:07 [FINE] -- PCSStarter: registering DispatcherHandler
+200409-20:55:07 [FINE] -- DispatcherHandler: created!
+200409-20:55:08 [INFO] -- timer: starting...
+200409-20:55:08 [INFO] -- PCSCore: starting...
+200409-20:55:08 [INFO] -- EntranceGateHandler: starting...
+200409-20:55:08 [INFO] -- DispatcherHandler: starting...
+200409-20:55:10 [FINE] -- DispatcherHandler: message received: [DispatcherHandlerEmulator (TicketCollected) -- Driver collected the ticket].
+200409-20:55:10 [INFO] -- DispatcherHandler: ticket collected message received.  Send ticket collected message to PCS Core.
+200409-20:55:10 [FINE] -- PCSCore: message received: [DispatcherHandler (TicketCollected) -- ticket collected !].
+200409-20:55:10 [INFO] -- ------------------------------------------------------------
+200409-20:55:10 [INFO] -- PCSCore :ticket collected message received !
+200409-20:55:10 [INFO] -- PCSCore :sending signal to Gate Handler to open the gate !
+200409-20:55:10 [INFO] -- PCSCore: Open the gate now
+200409-20:55:10 [FINE] -- EntranceGateHandler: message received: [PCSCore (GateOpenRequest) -- ].
+200409-20:55:10 [INFO] -- EntranceGateHandler: gate open request received
+200409-20:55:10 [INFO] -- EntranceGateHandler: send signal to open the gate now.
+200409-20:55:10 [FINE] -- EntranceGateHandlerEmulator: Gate open signal received.  [autoOpen is on]
+200409-20:55:10 [FINE] -- EntranceGateHandlerEmulator: Gate open timer started.
+200409-20:55:10 [FINE] -- EntranceGateHandler: gate status change: GateClosed --> GateOpening
+200409-20:55:12 [FINE] -- EntranceGateHandler: message received: [Timer (TimesUp) -- TimesUp 00001 0].
+200409-20:55:12 [FINE] -- EntranceGateHandlerEmulator: Times up received.
+200409-20:55:12 [FINE] -- EntranceGateHandlerEmulator: Gate open timer is up.  [autoOpen is on]
+200409-20:55:12 [FINE] -- EntranceGateHandlerEmulator: Send gate open reply
+200409-20:55:12 [FINE] -- EntranceGateHandler: message received: [EntranceGateHandlerEmulator (GateOpenReply) -- Gate Open Reply].
+200409-20:55:12 [INFO] -- EntranceGateHandler: gate open reply received
+200409-20:55:12 [INFO] -- EntranceGateHandler: inform PCS Core that gate has finished opening.
+200409-20:55:12 [FINE] -- EntranceGateHandler: gate status change: GateOpening --> GateOpened
+200409-20:55:12 [FINE] -- PCSCore: message received: [EntranceGateHandler (GateOpenReply) -- ].
+200409-20:55:12 [INFO] -- PCSCore: Gate is opened.
+200409-20:55:20 [FINE] -- PCSCore: message received: [Timer (TimesUp) -- TimesUp 00002 0].
+200409-20:55:20 [INFO] -- ------------------------------------------------------------
+200409-20:55:20 [INFO] -- PCSCore: Close the gate now
+200409-20:55:20 [FINE] -- EntranceGateHandler: message received: [PCSCore (GateCloseRequest) -- ].
+200409-20:55:20 [INFO] -- EntranceGateHandler: gate close request received
+200409-20:55:20 [INFO] -- EntranceGateHandler: send signal to close the gate now.
+200409-20:55:20 [FINE] -- EntranceGateHandlerEmulator: Gate close signal received.  [autoClose is on]
+200409-20:55:20 [FINE] -- EntranceGateHandlerEmulator: Gate close timer started.
+200409-20:55:20 [FINE] -- EntranceGateHandler: gate status change: GateOpened --> GateClosing
+200409-20:55:22 [FINE] -- EntranceGateHandler: message received: [Timer (TimesUp) -- TimesUp 00002 0].
+200409-20:55:22 [FINE] -- EntranceGateHandlerEmulator: Times up received.
+200409-20:55:22 [FINE] -- EntranceGateHandlerEmulator: Gate close timer is up.  [autoClose is on]
+200409-20:55:22 [FINE] -- EntranceGateHandlerEmulator: Send gate close reply
+200409-20:55:22 [FINE] -- EntranceGateHandler: message received: [EntranceGateHandlerEmulator (GateCloseReply) -- Gate Close Reply].
+200409-20:55:22 [INFO] -- EntranceGateHandler: gate close reply received
+200409-20:55:22 [INFO] -- EntranceGateHandler: inform PCS Core that gate has finished closing.
+200409-20:55:22 [FINE] -- EntranceGateHandler: gate status change: GateClosing --> GateClosed
+200409-20:55:22 [FINE] -- PCSCore: message received: [EntranceGateHandler (GateCloseReply) -- ].
+200409-20:55:22 [INFO] -- PCSCore: Gate is closed.
+200409-20:56:08 [FINE] -- PCSCore: message received: [Timer (TimesUp) -- TimesUp 00001 0].
+200409-20:56:08 [INFO] -- ------------------------------------------------------------
+200409-20:56:08 [INFO] -- Poll: TimesUp 00001 0
+200409-20:56:08 [FINE] -- EntranceGateHandler: message received: [PCSCore (Poll) -- ].
+200409-20:56:08 [FINE] -- DispatcherHandler: message received: [PCSCore (Poll) -- ].
+200409-20:56:08 [INFO] -- DispatcherHandler: poll request received.  Send poll request to hardware.
+200409-20:56:08 [FINE] -- DispatcherHandlerEmulator: Poll request received. 
+200409-20:56:08 [FINE] -- DispatcherHandlerEmulator: Send poll ack.
+200409-20:56:08 [FINE] -- DispatcherHandler: message received: [DispatcherHandlerEmulator (PollAck) -- ].
+200409-20:56:08 [INFO] -- DispatcherHandler: poll ack received.  Send poll ack to PCS Core.
+200409-20:56:08 [INFO] -- EntranceGateHandler: poll request received.  Send poll request to hardware.
+200409-20:56:08 [FINE] -- EntranceGateHandlerEmulator: Poll request received.  [autoPoll is on]
+200409-20:56:08 [FINE] -- EntranceGateHandlerEmulator: Send poll ack.
+200409-20:56:08 [FINE] -- EntranceGateHandler: message received: [EntranceGateHandlerEmulator (PollAck) -- ].
+200409-20:56:08 [INFO] -- EntranceGateHandler: poll ack received.  Send poll ack to PCS Core.
+200409-20:56:08 [FINE] -- PCSCore: message received: [DispatcherHandler (PollAck) -- DispatcherHandler is up!].
+200409-20:56:08 [INFO] -- PollAck: DispatcherHandler is up!
+200409-20:56:08 [FINE] -- PCSCore: message received: [EntranceGateHandler (PollAck) -- EntranceGateHandler is up!].
+200409-20:56:08 [INFO] -- PollAck: EntranceGateHandler is up!
+200409-20:57:08 [FINE] -- PCSCore: message received: [Timer (TimesUp) -- TimesUp 00001 0].
+200409-20:57:08 [INFO] -- ------------------------------------------------------------
+200409-20:57:08 [INFO] -- Poll: TimesUp 00001 0
+200409-20:57:08 [FINE] -- DispatcherHandler: message received: [PCSCore (Poll) -- ].
+200409-20:57:08 [FINE] -- EntranceGateHandler: message received: [PCSCore (Poll) -- ].
+200409-20:57:08 [INFO] -- DispatcherHandler: poll request received.  Send poll request to hardware.
+200409-20:57:08 [FINE] -- DispatcherHandlerEmulator: Poll request received. 
+200409-20:57:08 [FINE] -- DispatcherHandlerEmulator: Send poll ack.
+200409-20:57:08 [FINE] -- DispatcherHandler: message received: [DispatcherHandlerEmulator (PollAck) -- ].
+200409-20:57:08 [INFO] -- DispatcherHandler: poll ack received.  Send poll ack to PCS Core.
+200409-20:57:08 [INFO] -- EntranceGateHandler: poll request received.  Send poll request to hardware.
+200409-20:57:08 [FINE] -- EntranceGateHandlerEmulator: Poll request received.  [autoPoll is on]
+200409-20:57:08 [FINE] -- EntranceGateHandlerEmulator: Send poll ack.
+200409-20:57:08 [FINE] -- EntranceGateHandler: message received: [EntranceGateHandlerEmulator (PollAck) -- ].
+200409-20:57:08 [INFO] -- EntranceGateHandler: poll ack received.  Send poll ack to PCS Core.
+200409-20:57:08 [FINE] -- PCSCore: message received: [DispatcherHandler (PollAck) -- DispatcherHandler is up!].
+200409-20:57:08 [INFO] -- PollAck: DispatcherHandler is up!
+200409-20:57:08 [FINE] -- PCSCore: message received: [EntranceGateHandler (PollAck) -- EntranceGateHandler is up!].
+200409-20:57:08 [INFO] -- PollAck: EntranceGateHandler is up!
