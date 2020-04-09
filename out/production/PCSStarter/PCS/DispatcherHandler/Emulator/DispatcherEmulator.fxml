@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="497.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PCS.DispatcherHandler.Emulator.DispatcherEmulatorController">
+	<children>
+
+		<AnchorPane prefHeight="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+			<children>
+				<Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="120.0" text="Poll Request" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
+			</children>
+		</AnchorPane>
+
+		<AnchorPane prefHeight="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0">
+			<children>
+				<Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="120.0" text="Poll ACK" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
+			</children>
+		</AnchorPane>
+
+		<AnchorPane prefHeight="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0">
+			<children>
+				<Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="120.0" text="Ticket Request" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
+				<Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="120.0" text="Display Information" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="0.0" ><font><Font size="12.0" /></font></Button>
+				<Button mnemonicParsing="false" onAction="#buttonPressed" prefHeight="30.0" prefWidth="120.0" text="Ticket Collected" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"><font><Font size="12.0" /></font></Button>
+			</children>
+
+		</AnchorPane>
+		<TextArea fx:id="dispatcherTextArea" editable="false" layoutX="22.0" layoutY="141.0" prefHeight="425.0" prefWidth="457.0" AnchorPane.bottomAnchor="159.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="141.0" />
+      <TextArea fx:id="dispatcherDisplayTextArea" editable="false" layoutX="20.0" layoutY="588.0" prefHeight="121.0" prefWidth="460.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="588.0" />
+
+	</children>
+</AnchorPane>
