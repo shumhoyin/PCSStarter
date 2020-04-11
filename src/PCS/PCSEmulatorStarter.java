@@ -4,6 +4,8 @@ import AppKickstarter.timer.Timer;
 
 import PCS.PCSCore.PCSCore;
 import PCS.GateHandler.GateHandler;
+import PCS.ExitGateHandler.ExitGateHandler;
+
 //import PCS.CollectorHandler.CollectorHandler;
 import PCS.DispatcherHandler.DispatcherHandler;
 //import PCS.PayMachineHandler.PayMachineHandler;
@@ -11,6 +13,7 @@ import PCS.DispatcherHandler.DispatcherHandler;
 //import PCS.VacancyDisplayHandler.VacancyDisplayHandler;
 
 import PCS.GateHandler.Emulator.GateEmulator;
+import PCS.ExitGateHandler.Emulator.ExitGateEmulator;
 
 //import PCS.CollectorHandler.Emulator.CollectorEmulator;
 import PCS.DispatcherHandler.Emulator.DispatcherEmulator;
@@ -59,6 +62,7 @@ public class PCSEmulatorStarter extends PCSStarter {
 	    Timer timer = null;
 	    PCSCore pcsCore = null;
 	    GateEmulator entrancegateEmulator = null;
+	    ExitGateEmulator exitgateEmulator = null;
 
 
 //	    CollectorEmulator collectorEmulator = null;
@@ -76,6 +80,7 @@ public class PCSEmulatorStarter extends PCSStarter {
 	        timer = new Timer("timer", pcsEmulatorStarter);
 	        pcsCore = new PCSCore("PCSCore", pcsEmulatorStarter);
 			entrancegateEmulator = new GateEmulator("EntranceGateHandler", pcsEmulatorStarter);
+		    exitgateEmulator = new ExitGateEmulator("ExitGateHandler", pcsEmulatorStarter);
 
 
 
@@ -91,6 +96,7 @@ public class PCSEmulatorStarter extends PCSStarter {
 
 		// start emulator GUIs
 			entrancegateEmulator.start();
+			exitgateEmulator.start();
 
 
 
@@ -109,6 +115,10 @@ public class PCSEmulatorStarter extends PCSStarter {
 	    pcsEmulatorStarter.setTimer(timer);
 	    pcsEmulatorStarter.setPCSCore(pcsCore);
 	    pcsEmulatorStarter.setGateHandler(entrancegateEmulator);
+	    pcsEmulatorStarter.setExitGateHandler(exitgateEmulator);
+
+
+//	    pcsEmulatorStarter.setExitGateHandler(exitgateEmulator);
 
 
 //
@@ -123,6 +133,7 @@ public class PCSEmulatorStarter extends PCSStarter {
 	    new Thread(timer).start();
 	    new Thread(pcsCore).start();
 	    new Thread(entrancegateEmulator).start();
+	    new Thread(exitgateEmulator).start();
 
 
 
@@ -150,7 +161,10 @@ public class PCSEmulatorStarter extends PCSStarter {
         this.pcsCore = pcsCore;
     }
     private void setGateHandler(GateHandler entrancegateHandler) { this.entrancegateHandler = entrancegateHandler; }
+	private void setExitGateHandler(ExitGateHandler exitgateHandler) { this.exitgateHandler = exitgateHandler; }
 
+
+//	private void setExitGateHandler(GateHandler exitgateHandler) { this.exitgateHandler = exitgateHandler; }
 
 
 //    private void setCollectorHandler(CollectorHandler collectorHandler) { this.collectorHandler = collectorHandler; }

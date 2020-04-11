@@ -26,12 +26,12 @@ public class DispatcherEmulator extends DispatcherHandler {
 
 
     //------------------------------------------------------------
-    // GateEmulator
+    // DispatcherEmulator
     public DispatcherEmulator(String id, PCSStarter pcsStarter) {
         super(id, pcsStarter);
         this.pcsStarter = pcsStarter;
         this.id = id + "Emulator";
-    } // GateEmulator
+    } // DispatcherEmulator
 
 
     //------------------------------------------------------------
@@ -57,7 +57,7 @@ public class DispatcherEmulator extends DispatcherHandler {
             Platform.exit();
         });
         myStage.show();
-    } //DispatcherEmulator
+    } //start
 
     //------------------------------------------------------------
     // processMsg
@@ -65,10 +65,6 @@ public class DispatcherEmulator extends DispatcherHandler {
         boolean quit = false;
 
         switch (msg.getType()) {
-
-//            case TimesUp:
-//                handleTimesUp(msg);
-//                break;
 
             case EntranceInfoReply:
                 handleTicketReply(msg);

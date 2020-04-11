@@ -5,10 +5,12 @@ import AppKickstarter.misc.Msg;
 import AppKickstarter.timer.Timer;
 
 import PCS.PCSCore.PCSCore;
-import PCS.GateHandler.GateHandler;
+import PCS.GateHandler.GateHandler; //this is entrancegate
+import PCS.ExitGateHandler.ExitGateHandler; //this is exit gate
 
 //import PCS.CollectorHandler.CollectorHandler;
 import PCS.DispatcherHandler.DispatcherHandler;
+
 //import PCS.PayMachineHandler.PayMachineHandler;
 //import PCS.SensorHandler.SensorHandler;
 //import PCS.VacancyDisplayHandler.VacancyDisplayHandler;
@@ -22,6 +24,7 @@ public class PCSStarter extends AppKickstarter {
     protected Timer timer;
     protected PCSCore pcsCore;
     protected GateHandler entrancegateHandler;
+	protected ExitGateHandler exitgateHandler;
 
 
 
@@ -71,6 +74,7 @@ public class PCSStarter extends AppKickstarter {
 	    timer = new Timer("timer", this);
 	    pcsCore = new PCSCore("PCSCore", this);
 		entrancegateHandler = new GateHandler("EntranceGateHandler", this);
+		exitgateHandler = new ExitGateHandler("EntranceGateHandler", this);
 
 
 //	    collectorHandler = new CollectorHandler("CollectorHandler", this);
@@ -91,6 +95,7 @@ public class PCSStarter extends AppKickstarter {
 	new Thread(timer).start();
 	new Thread(pcsCore).start();
 	new Thread(entrancegateHandler).start();
+	new Thread(exitgateHandler).start();
 
 
 
@@ -118,6 +123,7 @@ public class PCSStarter extends AppKickstarter {
 	pcsCore.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
 	entrancegateHandler.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
 	timer.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
+	exitgateHandler.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
 
 
 

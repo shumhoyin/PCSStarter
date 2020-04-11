@@ -4,14 +4,18 @@ import AppKickstarter.AppKickstarter;
 import AppKickstarter.misc.*;
 import AppKickstarter.timer.Timer;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
 
 //======================================================================
 // PCSCore
 public class PCSCore extends AppThread {
+
+	int TicketId = 1000;
+
     private MBox entrancegateMBox;
-
-
-
+	private MBox exitgateMBox;
 
 
 //    private MBox collectorMBox;
@@ -27,6 +31,14 @@ public class PCSCore extends AppThread {
     private final int openCloseGateTime;		// for demo only!!!
     private final int OpenCloseGateTimerID=2;		// for demo only!!!
     private boolean entrancegateIsClosed = true;		// for demo only!!!
+//	private boolean exitegateIsClosed = true;		// for demo only!!!
+
+
+
+
+	private ArrayList<Ticket> TicketList = new ArrayList<Ticket>();
+
+
 
 
     //------------------------------------------------------------
@@ -47,6 +59,7 @@ public class PCSCore extends AppThread {
 	log.info(id + ": starting...");
 
 		entrancegateMBox = appKickstarter.getThread("EntranceGateHandler").getMBox();
+		exitgateMBox = appKickstarter.getThread("ExitGateHandler").getMBox();
 
 //	collectorMBox = appKickstarter.getThread("CollectorHandler").getMBox();
 	dispatcherMBox = appKickstarter.getThread("DispatcherHandler").getMBox();
@@ -119,6 +132,8 @@ public class PCSCore extends AppThread {
 			Timer.setTimer(id, mbox, openCloseGateTime, OpenCloseGateTimerID);
 		}else{
 			log.warning(id + ": The Gate is opened now ! ****ignore request***");
+			log.warning(id + ": restart the timer to close the gate");
+			Timer.setTimer(id, mbox, openCloseGateTime, OpenCloseGateTimerID);
 		}
 //		} else {
 //			log.info(id + ": Close the gate now");
@@ -132,9 +147,28 @@ public class PCSCore extends AppThread {
 		log.info("------------------------------------------------------------");
 		log.info(id + " :ticket request received !");
 
-		dispatcherMBox.send(new Msg(id, mbox, Msg.Type.EntranceInfoReply, "2020/6/30  10:30pm (just hard code for testing)"));
+		TicketList.add(new Ticket(TicketId));
+		System.out.println( "1.   " + TicketId);
 
+
+		/*SYSTEM.OUT.PRIN IS FOR TESTING ONLY, WILL BE DELETED LATER*/
+
+		for(Ticket tic: TicketList)
+		{
+			if(tic.getTicketId() == TicketId){
+				System.out.println(tic.getTicketId());
+				System.out.println(tic.toString());
+				dispatcherMBox.send(new Msg(id, mbox, Msg.Type.EntranceInfoReply, tic.toString()));
+				System.out.println( "2.   " +  tic.toString());
+			}
+		}
+		TicketId++;
 		log.info(id + " : Reply sent back to dispatcherHandler");
+
+
+
+
+
 	}// handleTicketRequest
 
 
@@ -148,6 +182,7 @@ public class PCSCore extends AppThread {
 	    case PollTimerID:
 		log.info("Poll: " + msg.getDetails());
 			entrancegateMBox.send(new Msg(id, mbox, Msg.Type.Poll, ""));
+			exitgateMBox.send(new Msg(id, mbox, Msg.Type.Poll, ""));
 
 //		collectorMBox.send(new Msg(id, mbox, Msg.Type.Poll, ""));
 		dispatcherMBox.send(new Msg(id, mbox, Msg.Type.Poll, ""));

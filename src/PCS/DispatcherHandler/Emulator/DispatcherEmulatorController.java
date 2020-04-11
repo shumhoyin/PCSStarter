@@ -56,6 +56,7 @@ public class DispatcherEmulatorController {
 
             case "Ticket Collected":
                 appendTextArea(id + ": Send ticket collected message to Handler.");
+                dispatcherDisplayTextArea.clear();
                 dispatcherMBox.send(new Msg(id, null, Msg.Type.TicketCollected, "Driver collected the ticket"));
                 break;
 
